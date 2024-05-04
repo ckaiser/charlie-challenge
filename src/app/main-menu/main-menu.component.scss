@@ -1,0 +1,26 @@
+:host {
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background: var(--base-color);
+    position: fixed;
+    height: 65px;
+    width: 100vw;
+    bottom: 0;
+}
+
+@media (width >= 1025px) {
+    :host {
+        width: 380px;
+        left: calc(50% - 180px);
+        position: absolute;
+        border: 1px solid var(--border-color);
+        border-bottom-left-radius: 32px;
+        border-bottom-right-radius: 32px;
+        border-top: none;
+        bottom: inherit;
+        top: 0;
+    }
+}

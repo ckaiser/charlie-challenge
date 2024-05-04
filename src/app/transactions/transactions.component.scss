@@ -1,0 +1,145 @@
+:host {
+    background-color: var(--base-color);
+    border-top: 1px solid var(--border-color-light);
+    border-top-right-radius: 32px;
+    border-top-left-radius: 32px;
+    margin-top: 32px;
+    padding: 32px 16px;
+    padding-bottom: 65px;
+    flex-grow: 2;
+}
+
+h1,
+h2,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    width: 25px;
+    height: 25px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    animation: scale-in 180ms cubic-bezier(0.65, 0.55, 0.65, 1.5);
+}
+
+h1 {
+    padding-right: 4px;
+}
+
+h1, .search {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    height: 28px;
+    display: flex;
+    flex-direction: row;
+}
+
+.search {
+    button {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    input {
+        animation: pop-in 200ms ease-in;
+        background: none;
+        border: none;
+        border-bottom: 1px solid var(--border-color);
+        transition: border-width 200ms;
+        width: 90%;
+        font-size: 22px;
+
+        &:focus, &:focus-visible {
+            border: none;
+            border-bottom: 2px solid var(--border-color);
+            outline: none;
+        }
+    }
+}
+
+h2 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: var(--heading-color);
+    margin-top: 22px;
+}
+
+ul,
+li {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+    margin: 16px 0;
+    display: grid;
+    grid-template-columns: 48px 2fr 1fr;
+    column-gap: 16px;
+
+    img {
+        width: 48px;
+        height: 48px;
+        border-radius: 48px;
+        background: --var(--base-color);
+        border: 1px solid var(--border-color);
+        object-fit: cover;
+        grid-column: 1;
+        grid-row: span 2;
+    }
+
+    .transaction,
+    .datetime {
+        grid-column: 2;
+    }
+
+    .transaction {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 23px;
+        color: var(--text-color);
+    }
+
+    .datetime {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 18px;
+        color: var(--text-sub-color);
+    }
+
+    .balance {
+        grid-column: 3;
+        grid-row: 1 / span 2;
+        text-align: right;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 23px;
+
+        &.negative {
+            color: var(--negative-color);
+        }
+
+        &.positive {
+            color: var(--positive-color);
+        }
+    }
+}
+
+@media (width >= 1025px) {
+    :host {
+        flex-grow: initial;
+        padding: 32px 32px 16px 31px;
+        border-radius: 32px;
+    }
+}

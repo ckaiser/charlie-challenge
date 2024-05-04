@@ -1,0 +1,27 @@
+@if (searching()) {
+    <div class="search">
+        <input type="text" #transactionSearch (keyup)="onSearchChanged(transactionSearch.value)" (change)="onSearchChanged(transactionSearch.value)" placeholder="Transaction filter...">
+        <button type="button" (click)="onSearchButtonClicked()" title="Stop Filtering">✕</button>
+    </div>
+} @else {
+    <h1>Transactions <button type="button" (click)="onSearchButtonClicked();" title="Filter Transactions"><app-svg-icon icon="search" /></button></h1>
+}
+
+@for (day of visibleDays(); track day) {
+    <h2>{{day.title}}</h2>
+    <ul>
+        @for (transaction of day.transactions; track transaction) {
+            <li>
+                <img src="{{transaction.logo}}" alt="" async loading="lazy">
+                <span class="transaction">{{transaction.name}}</span>
+                <span class="datetime">{{transaction.date | date: 'MMM d, y, HH:mm' }}</span>
+                <span class="balance"
+                    [class.positive]="transaction.isPositive"
+                    [class.negative]="!transaction.isPositive"
+                >{{transaction.amount}}</span>
+            </li>
+        }
+    </ul>
+} @empty {
+    <h2>No transactions found</h2>
+}
